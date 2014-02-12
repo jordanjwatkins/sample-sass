@@ -1,0 +1,29 @@
+/**
+ * Grid wrapper
+ */
+%grid{
+    margin-bottom:0;
+	@extend %gapless;
+}
+
+/**
+ * Grid
+ */
+%grid__item{
+	display:inline-block;
+	vertical-align:top;
+}
+
+// inline-block gap fix
+%gapless { 
+	font-size:0;
+	line-height:0;
+	> * {
+		display:inline-block;
+		@include font-size($base-font-size);
+		line-height: $base-line-height;
+		text-align:left;
+		vertical-align:top;
+	}
+	> script { display:none; }
+}

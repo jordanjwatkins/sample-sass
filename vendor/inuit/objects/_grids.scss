@@ -1,0 +1,41 @@
+/**
+ * Grid wrapper
+ */
+%grid{
+    margin-left:-$base-spacing-unit;
+    list-style:none;
+    margin-bottom:0;
+	@extend %gapless;
+}
+
+/**
+ * Grid
+ */
+%grid__item{
+	display:inline-block;
+	width:100%;
+	padding-left:$base-spacing-unit;
+	vertical-align:top;
+	@if $global-border-box == false{
+		@include vendor(box-sizing, border-box);
+	}
+}
+
+
+//inline-block gap fix and placeholder
+%gapless { 
+	font-size:0;
+	line-height:0;
+	text-align:right;
+	> * { font-size: 1rem; line-height: 1.5; }
+}
+
+/*
+%grid__item {
+
+	padding-left:0;
+	vertical-align:top;
+	text-align:left;
+	direction:ltr;
+	font-size: $base-font-size;
+}*/

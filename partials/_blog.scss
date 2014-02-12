@@ -1,0 +1,70 @@
+body.blog-page {
+	.main-grid {
+		@include row();
+		&:before {
+			@extend %psock-v;
+			@extend %seven-tenths;
+			@extend %lap-one-whole;
+			background:#fff;
+		}
+		&:after {
+			@extend %psock;			
+			@extend %whole-height;
+			@include pos(abs, 0 null null $seven-tenths);
+			@extend %color_to_trans;
+			@include opacity(0.4);
+			width:2px;
+			margin-left:-2px;
+			@include media-query(portable) {
+				display:none;
+			}
+		}
+		.main {
+			@extend %seven-tenths;
+			@extend %lap-one-whole;
+			@extend %main-padding;		
+		}
+		
+	}	
+	.page-header h1 { margin-bottom:25px; }	
+	.page-header + .hentry,
+	.hentry:first-child{padding-top:0;}
+	.page-header + .hentry:before,
+	.hentry:first-child:before{ display:none; }	
+	.hentry {		
+		padding: 25px 0;
+		&:before { @extend %psider-h-top; }		
+		.entry-title {
+			@extend %h2--normal;
+			margin-bottom:0;
+		}
+		.entry-meta {
+			@include font-size(14px);
+			margin-bottom:15px;
+			word-spacing:1px;
+			
+		}
+		.entry-summary, .entry-content {
+			a { @extend %content-a; }
+			p:before {
+				display: inline-block;
+				content: "";
+			}
+			.read_more { 
+				@include pos(abs, null 0 -30px null);
+				line-height:1.2;
+			}
+		}		
+	}	
+	.post-nav {
+		ul { @extend %nav; }
+		a {
+			font-weight: 900;
+			overflow: hidden;
+			margin-top: 40px;
+		}
+		
+		.previous { float:left; }
+		.next { float:right; }
+	}
+}

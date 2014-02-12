@@ -1,0 +1,13 @@
+/* Share This CSS */
+.single .share-this{}
+.single .share-this > span{display:inline-block;margin-right:15px;}
+.single .share-this span span{height:100%;margin:0;}
+%share-this {
+	margin:10px 0 0;
+	& > span{display:inline-block;margin-right:15px;}
+	span span{height:100%;margin:0;}
+}
+
+@if ($share-this) {
+	.share-this { @extend %share-this; }
+}

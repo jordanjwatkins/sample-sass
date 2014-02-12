@@ -1,0 +1,89 @@
+@mixin filter-gradient($start-color, $end-color, $orientation: vertical) {
+	$gradient-type: if($orientation == vertical, 0, 1);
+	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=#{$gradient-type}, startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}');
+}
+
+@mixin rgba-bg($color, $alpha) {
+	$rgba: rgba($color, $alpha);
+	$ie-hex-str: ie-hex-str($rgba);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+	background-color: transparent;
+	background-color: $rgba;	
+	zoom: 1;
+	.ie9 &, &.ie9{
+		filter:none !important;
+	}
+}
+
+@mixin fade($ie:true,$opacity:0.75, $speed:.3s, $easing:ease-out) {
+	@include vendor(transition, opacity $speed $easing);
+	&:hover {
+		opacity: 0.75;
+		@if ($ie) {
+			filter:alpha(opacity = #{$opacity * 100});
+		}
+	}
+	
+	// CSS: Prevent Firefox Opacity Change 1px Wiggle Bug (apply to elements that are changing opacity)
+	//-moz-backface-visibility: hidden;
+
+	// CSS: Prevent Chrome Opacity Transition Bug
+	-webkit-backface-visibility: hidden;
+}
+
+@mixin opacity($opacity) {
+  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  opacity: $opacity;
+}
+
+@mixin svg-gradient($gradient) { 
+	@include background-image($gradient);
+	@include background-image(-svg($gradient));	
+	.ie9 &, &.ie9{
+		filter:none !important;
+	}
+}
+
+@mixin gradient($color1, $color2, $direction:top) { 
+	@include background-image(linear-gradient($direction, $color1, $color2));
+	@if ($direction == top or $direction == bottom) {
+		$direction: vertical;
+	} @elseif ($direction == left or $direction == right) {
+		$direction: horizontal;
+	} 
+	@if ($direction == right or $direction == bottom) {
+		$c1: $color1;
+		$color1: $color2;
+		$color2: $c1;
+	}
+	@include filter-gradient($color1, $color2, $direction);
+}
+
+@mixin darken-gradient($color, $darken) {
+	@include gradient($color, darken($color, $darken));
+}
+
+@mixin glow($blur:15px, $spread:0, $color:#000, $alpha: 0.4) {
+	$rgba: rgba($color, $alpha);
+	box-shadow: 0 0 $blur $spread $rgba;
+}
+
+@mixin color_to_trans($color, $direction:left, $stop-1-a:0.4, $stop-1-pos:18%, $stop-2-a:0.91, $stop-2-pos:34%, $stop-3-a:0.97, $stop-3-pos:66%) {
+	@include svg-gradient(linear-gradient($direction, rgba($color, 0) 0, rgba($color, $stop-1-a) $stop-1-pos, rgba($color, $stop-2-a) $stop-2-pos, rgba($color, $stop-3-a) $stop-3-pos, rgba($color, 1) 100%));
+	@if ($direction == top) {
+		$direction: vertical;
+	} @elseif ($direction == left) {
+		$direction: horizontal;
+	}
+	@include filter-gradient(rgba($color, 0), rgba($color, 1), $direction);
+}
+
+@mixin color_to_trans_edges($color, $direction:left, $stop-1-a:0.4, $stop-1-pos:12%, $stop-2-a:0.6, $stop-2-pos:25%, $stop-3-a:0.90, $stop-3-pos:50%) {
+	@include svg-gradient(linear-gradient($direction, rgba($color, 0) 0, rgba($color, $stop-1-a) $stop-1-pos, rgba($color, $stop-2-a) $stop-2-pos, rgba($color, $stop-3-a) $stop-3-pos, rgba($color, $stop-2-a) (100% - $stop-2-pos), rgba($color, $stop-1-a) (100% - $stop-1-pos), rgba($color, 0) 100%));
+	@if ($direction == top) {
+		$direction: vertical;
+	} @elseif ($direction == left) {
+		$direction: horizontal;
+	}
+	@include filter-gradient(rgba($color, 0), rgba($color, 1), $direction);
+}

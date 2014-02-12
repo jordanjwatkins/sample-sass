@@ -1,0 +1,27 @@
+.search-form {
+	@extend %zebra-form;
+	@extend %main-form-theme;
+	.form-row { padding:0; }
+	.search-field {
+		padding:4px 5px;
+	}	
+	.search-submit {	
+		@include pos(abs, 0 0  null null);
+		background: #efeff7 !important;
+		height:100%;
+		width: 33px !important;
+		text-indent:-9999px;
+		box-shadow:none;
+		margin:0;
+		border-radius:0 !important;
+		border:1px solid #999 !important;
+		&:before {
+			@extend %psock;
+			@include pos(abs, 4px 6px  null null);
+			background: url(../img/search-icon.png) no-repeat 0 0;
+			width:18px;
+			height:18px;			
+		}
+	}
+	.main & { max-width:400px; }
+}

@@ -1,0 +1,32 @@
+/* Defaults */
+$use-nav: true;
+$zebra-forms: true;
+$placeholders-fix: true;
+$rslides: true;
+$share-this: true;
+
+$page-width: 980px;
+$desk-start: $page-width;
+
+$base-font-family: 'Lato', arial, sans-serif;
+$base-font-size: 16px;
+$base-line-height: 1.5;
+
+/* Colors & Gradients */
+$bg-color: #fff;
+$main-color-dark: #333;
+$main-color: #666;
+$main-color-light: #999;
+$main-color-lighter: #ccc;
+$main-color-superlight: #ddd;
+$accent-color-dark:#1a5095;
+$accent-color: #5252a8;
+$accent-color-light: #6d84b4;
+$accent-color-lighter: #8992c0;
+
+$red: #990000;
+$green: #339900;
+
+$main-gradient-alpha:#fcfcfc;
+$main-gradient-omega:#e7e7e7;
+$main-gradient: linear-gradient(top, $main-gradient-alpha, $main-gradient-omega);

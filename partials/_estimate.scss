@@ -1,0 +1,96 @@
+body.estimate {
+	.main {
+		> div {
+			@include row();		
+			&:before {
+				@extend %psock-v;
+				@extend %seven-tenths;
+				@extend %lap-one-whole;
+				background:#fff;
+			}
+			&:after {
+				@extend %psock;			
+				@extend %whole-height;
+				@include pos(abs, 0 null null $seven-tenths);
+				@extend %color_to_trans;
+				@include opacity(0.4);
+				width:2px;
+				margin-left:-2px;
+			}
+		}
+		.expand { 
+			@extend %pos-4;
+			@extend %seven-tenths;
+			cursor:pointer;
+		}
+	}
+		
+	.main-1 {
+		@extend %main-padding;
+		@extend %seven-tenths;
+		@extend %main-form-theme;
+		@extend %zebra-form;
+		padding-right: 0;
+		input[type='submit'] { float:right; }
+		background: url(../img/mic-bg.jpg) no-repeat right top;
+		min-height:700px;
+		.intro {
+			@extend %one-half;		
+			padding-right:15px;
+			margin-bottom:15px;
+		}
+		.form-success { width:43%; }		
+	}
+		
+	.main-2 {
+		@extend %three-tenths;
+		padding:5px 0;
+		.enviro {
+			padding:0 8px;
+			margin-top:5px;
+			img { display:block; }
+			.caption {
+				font-size:13px;
+			}
+		}
+	}
+	
+	#estimate-form {
+		@extend %one-half;
+		padding-right:15px;
+		z-index:2;
+	}
+	
+	#estimate-long-form {
+		display:none;
+		.form-row {
+			@extend %one-half;
+			padding-right:30px;
+		}
+		.form-row-8,
+		.form-row-9,
+		.form-row-10,
+		.form-row-12,
+		.form-row-13,
+		.form-row-14,
+		.form-row-15,
+		.form-row-16,
+		.form-row-17 {
+			display:inline-block;
+		}
+		
+		.form-row-9,
+		.form-row-10 { @extend %one-quarter; }
+		.form-row-10 { @extend %one-quarter; }
+		.form-row.form-row-19,
+		.form-row.form-row-20 { @extend %one-whole; }
+		.cell { 
+			display:inline-block;
+			vertical-align:middle;
+			float:none;
+			margin-right:5px;
+			input[type='checkbox'] { top:-1px; }
+		}
+	}
+	
+}

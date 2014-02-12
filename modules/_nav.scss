@@ -1,0 +1,49 @@
+%two-level-dropdown {
+	> li {
+		ul {		
+			@include vendor(transition, opacity .3s ease-out, max-height .8s ease-out);
+			@include opacity(0);
+			max-height:0;
+			overflow:hidden;
+			position:absolute;
+			top:100%;
+			list-style:none;
+			margin:0;
+			.ie8 &{ display:none; }
+		}
+		&:hover ul{
+			max-height:1000px;
+			@include opacity(1);
+			.ie8 &{ display:block; }			
+		}
+	}	
+}
+
+%nav {
+	list-style:none;
+	margin:0;
+	padding:0;
+	& > li {
+		margin:0;
+	}
+	& > li > a { 
+		display:block;
+		text-decoration:none;
+		border-bottom: 0;
+	}
+}
+
+@mixin nav-dividers($color:#333, $height:14px, $width:1px) {
+	> li:before {
+		content:'';
+		display:block;
+		background: $color;
+		height:$height;
+		width:$width;
+		margin-top:-($height / 2 - 1);
+		@include pos(abs, 50% null null -1px);
+	}
+	> li:first-child:before {
+		display:none;
+	}
+}

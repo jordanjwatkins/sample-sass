@@ -1,0 +1,53 @@
+body.post-type-archive-product {
+	.main { 
+		@extend %main-padding;
+		padding-bottom:0;
+	}
+	.product-categories {
+		@include row(15px);
+		> div { 
+			@extend %one-half;
+			margin-bottom:15px;
+		}
+		.category {
+			display:inline-block;
+			padding: 25px 20px 15px 25px;
+			height:100%;
+			&:before {
+				@extend %psock-stretch;
+				@extend %pos-1;
+				background: rgba($accent-color-light, 0.4);
+				@include background(linear-gradient(top, rgba($accent-color-light, 0.8) 0%, rgba($accent-color-light, 0.5) 25%, rgba($accent-color-light, 0) 90%));
+				@include opacity(0.4);
+				border-top:1px solid $accent-color;			
+			}
+			img { 
+				float:left;
+				margin-right:25px;
+			}
+			.body {
+				@include font-size(14px);
+				display:table-cell;
+				position:static;
+				vertical-align:top;
+				.inner {
+					position:static;
+					padding-bottom:20px;
+				}
+				h2 { 
+					@extend %h4;
+					margin-bottom:5px;
+					a { 
+						@extend %content-a;
+						color:$main-color;
+						border-color: $main-color;
+					}
+				}
+				.link {
+					@extend %main-btn;
+					@include pos(abs, null null 20px 200px);
+				}
+			}
+		}
+	}
+}

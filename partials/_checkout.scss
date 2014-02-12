@@ -1,0 +1,107 @@
+body.woocommerce-checkout {
+	&.guest .woocommerce-info:first-child {
+		display:none;
+	}
+
+	.col2-set {
+		@include row(40px);
+		> div {
+			@extend %one-half;
+		}
+	}
+	
+	.checkout_coupon {
+		@extend %main-form-theme;
+		@extend %cf;
+		@include glow(3px);
+		border-radius:4px;
+		padding:20px 20px 5px;
+		margin-bottom:20px;
+		p {		
+			margin:0;
+			float:left;
+		}
+		#coupon_code { 
+			width:150px; 			
+			margin-right:10px;
+		}
+	}
+	
+	.checkout {
+		@extend %main-form-theme;
+		#customer_details { margin-bottom:15px; }
+		h3 { margin-bottom:10px; }
+		.col-2 h3 { float: left; }
+		p { 
+			margin-bottom:10px;
+			clear:both;
+		}
+		abbr {
+			cursor:normal;
+			border:0;
+		}
+		#billing_first_name_field,
+		#billing_last_name_field,
+		#billing_state_field,
+		#billing_postcode_field,
+		#billing_email_field,
+		#billing_phone_field,
+		#shipping_first_name_field,
+		#shipping_last_name_field,
+		#shipping_state_field,
+		#shipping_postcode_field,
+		#shipping_email_field,
+		#shipping_phone_field { 
+			@extend %one-half; 
+			float:left;
+			clear:none;
+		}
+		#billing_first_name_field,
+		#billing_state_field,
+		#billing_email_field,
+		#shipping_first_name_field,
+		#shipping_state_field,
+		#shipping_email_field { padding-right:5px; clear:left; }
+		#billing_last_name_field,
+		#billing_postcode_field,
+		#billing_phone_field,
+		#shipping_last_name_field,
+		#shipping_postcode_field,
+		#shipping_phone_field { padding-left:5px; }
+		#shiptobilling { float:right; }
+		#shiptobilling > * { 
+			display:inline-block;
+			width:auto;
+		}
+		#shiptobilling label {
+			font-size:12px;
+			top:-2px;
+			margin-left:3px;
+		}
+		.shipping_address { clear:both; }
+	}
+	
+	.payment_methods {
+		@extend %nav;
+		padding: 20px 20px 10px;
+		background:rgba($accent-color-lighter, 0.1);
+		margin-bottom:20px;
+		border-radius:4px;
+		li { margin-bottom:10px; }
+		input, label { 
+			display:inline-block !important;
+			width:auto !important;
+		}
+		label { 
+			margin-left: 10px;
+			top:-1px; 
+		}
+		label[for='payment_method_paypal'] img { @include pos(abs, -2px -50px null null); }
+		.payment_box {
+			margin:10px 0;
+			padding: 15px 15px 8px;
+			background:rgba($accent-color-lighter, 0.2);
+			border-radius:4px;
+		}
+	}
+}

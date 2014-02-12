@@ -1,0 +1,11 @@
+%color_to_trans {
+	@include color_to_trans($accent-color-light, bottom); // needs to be more efficient
+}
+
+%color_to_trans_edges {
+	@include color_to_trans_edges($accent-color-light);
+}
+
+%fade {
+	@include fade();
+}

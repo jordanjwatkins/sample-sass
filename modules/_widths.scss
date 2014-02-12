@@ -1,0 +1,334 @@
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Sizes in human readable format. These are used in conjunction with other
+ * objects and abstractions found in inuit.css, most commonly the grid system
+ * and faux flexbox.
+ *
+ * We have a mixin to generate our widths and their breakpoint-specific
+ * variations.
+ */
+
+@mixin grid-setup($namespace: "") {
+    /**
+    * Whole
+    */
+    %#{$namespace}one-whole         { width:100%; }
+
+
+    /**
+    * Halves
+    */
+    %#{$namespace}one-half          { width:50%; }
+
+
+    /**
+    * Thirds
+    */
+    %#{$namespace}one-third         { width:33.333%; }
+    %#{$namespace}two-thirds        { width:66.666%; }
+	
+    /**
+    * Quarters
+    */
+    %#{$namespace}one-quarter       { width:25%; }
+    %#{$namespace}two-quarters      { @extend %#{$namespace}one-half; }
+    %#{$namespace}three-quarters    { width:75%; }
+
+
+    /**
+    * Fifths
+    */
+    %#{$namespace}one-fifth         { width:20%; }
+    %#{$namespace}two-fifths        { width:40%; }
+    %#{$namespace}three-fifths      { width:60%; }
+    %#{$namespace}four-fifths       { width:80%; }
+
+
+    /**
+    * Sixths
+    */
+    %#{$namespace}one-sixth         { width:16.666%; }
+    %#{$namespace}two-sixths        { @extend %#{$namespace}one-third; }
+    %#{$namespace}three-sixths      { @extend %#{$namespace}one-half; }
+    %#{$namespace}four-sixths       { @extend %#{$namespace}two-thirds; }
+    %#{$namespace}five-sixths       { width:83.333%; }
+
+
+    /**
+    * Eighths
+    */
+    %#{$namespace}one-eighth        { width:12.5%; }
+    %#{$namespace}two-eighths       { @extend %#{$namespace}one-quarter; }
+    %#{$namespace}three-eighths     { width:37.5%; }
+    %#{$namespace}four-eighths      { @extend %#{$namespace}one-half; }
+    %#{$namespace}five-eighths      { width:62.5%; }
+    %#{$namespace}six-eighths       { @extend %#{$namespace}three-quarters; }
+    %#{$namespace}seven-eighths     { width:87.5%; }
+
+
+    /**
+    * Tenths
+    */
+    %#{$namespace}one-tenth         { width:10%; }
+    %#{$namespace}two-tenths        { @extend %#{$namespace}one-fifth; }
+    %#{$namespace}three-tenths      { width:30%; }
+    %#{$namespace}four-tenths       { @extend %#{$namespace}two-fifths; }
+    %#{$namespace}five-tenths       { @extend %#{$namespace}one-half; }
+    %#{$namespace}six-tenths        { @extend %#{$namespace}three-fifths; }
+    %#{$namespace}seven-tenths      { width:70%; }
+    %#{$namespace}eight-tenths      { @extend %#{$namespace}four-fifths; }
+    %#{$namespace}nine-tenths       { width:90%; }
+
+
+    /**
+    * Twelfths
+    */
+    %#{$namespace}one-twelfth       { width:8.333%; }
+    %#{$namespace}two-twelfths      { @extend %#{$namespace}one-sixth; }
+    %#{$namespace}three-twelfths    { @extend %#{$namespace}one-quarter; }
+    %#{$namespace}four-twelfths     { @extend %#{$namespace}one-third; }
+    %#{$namespace}five-twelfths     { width:41.666% }
+    %#{$namespace}six-twelfths      { @extend %#{$namespace}one-half; }
+    %#{$namespace}seven-twelfths    { width:58.333%; }
+    %#{$namespace}eight-twelfths    { @extend %#{$namespace}two-thirds; }
+    %#{$namespace}nine-twelfths     { @extend %#{$namespace}three-quarters; }
+    %#{$namespace}ten-twelfths      { @extend %#{$namespace}five-sixths; }
+    %#{$namespace}eleven-twelfths   { width:91.666%; }
+}
+
+@include grid-setup();
+
+/*** Mixins ****/
+
+/**
+* Whole
+*/
+@mixin one-whole		{ width:100%; }
+
+
+/**
+* Halves
+*/
+@mixin one-half          { width:50%; }
+
+
+/**
+* Thirds
+*/
+@mixin one-third         { width:33.333%; }
+@mixin two-thirds        { width:66.666%; }
+
+/**
+* Quarters
+*/
+@mixin one-quarter       { width:25%; }
+@mixin two-quarters      { @extend %one-half; }
+@mixin three-quarters    { width:75%; }
+
+
+/**
+* Fifths
+*/
+@mixin one-fifth         { width:20%; }
+@mixin two-fifths        { width:40%; }
+@mixin three-fifths      { width:60%; }
+@mixin four-fifths       { width:80%; }
+
+
+/**
+* Sixths
+*/
+@mixin one-sixth         { width:16.666%; }
+@mixin two-sixths        { @extend %one-third; }
+@mixin three-sixths      { @extend %one-half; }
+@mixin four-sixths       { @extend %two-thirds; }
+@mixin five-sixths       { width:83.333%; }
+
+
+/**
+* Eighths
+*/
+@mixin one-eighth        { width:12.5%; }
+@mixin two-eighths       { @extend %one-quarter; }
+@mixin three-eighths     { width:37.5%; }
+@mixin four-eighths      { @extend %one-half; }
+@mixin five-eighths      { width:62.5%; }
+@mixin six-eighths       { @extend %three-quarters; }
+@mixin seven-eighths     { width:87.5%; }
+
+
+/**
+* Tenths
+*/
+@mixin one-tenth         { width:10%; }
+@mixin two-tenths        { @extend %one-fifth; }
+@mixin three-tenths      { width:30%; }
+@mixin four-tenths       { @extend %two-fifths; }
+@mixin five-tenths       { @extend %one-half; }
+@mixin six-tenths        { @extend %three-fifths; }
+@mixin seven-tenths      { width:70%; }
+@mixin eight-tenths      { @extend %four-fifths; }
+@mixin nine-tenths       { width:90%; }
+
+
+/**
+* Twelfths
+*/
+@mixin one-twelfth       { width:8.333%; }
+@mixin two-twelfths      { @extend %one-sixth; }
+@mixin three-twelfths    { @extend %one-quarter; }
+@mixin four-twelfths     { @extend %one-third; }
+@mixin five-twelfths     { width:41.666% }
+@mixin six-twelfths      { @extend %one-half; }
+@mixin seven-twelfths    { width:58.333%; }
+@mixin eight-twelfths    { @extend %two-thirds; }
+@mixin nine-twelfths     { @extend %three-quarters; }
+@mixin ten-twelfths      { @extend %five-sixths; }
+@mixin eleven-twelfths   { width:91.666%; }
+
+
+
+/*** Vars ***/
+
+/**
+* Whole
+*/
+$one-whole		:100%;
+
+
+/**
+* Halves
+*/
+$one-half          :50%;
+
+
+/**
+* Thirds
+*/
+$one-third         :33.333%;
+$two-thirds        :66.666%;
+
+/**
+* Quarters
+*/
+$one-quarter       :25%;
+$two-quarters      :$one-half;
+$three-quarters    :75%;
+
+
+/**
+* Fifths
+*/
+$one-fifth         :20%;
+$two-fifths        :40%;
+$three-fifths      :60%;
+$four-fifths       :80%;
+
+
+/**
+* Sixths
+*/
+$one-sixth         :16.666%;
+$two-sixths        :$one-third;
+$three-sixths      :$one-half;
+$four-sixths       :$two-thirds;
+$five-sixths       :83.333%;
+
+
+/**
+* Eighths
+*/
+$one-eighth        :12.5%;
+$two-eighths       :$one-quarter;
+$three-eighths     :37.5%;
+$four-eighths      :$one-half;
+$five-eighths      :62.5%;
+$six-eighths       :$three-quarters;
+$seven-eighths     :87.5%;
+
+
+/**
+* Tenths
+*/
+$one-tenth         :10%;
+$two-tenths        :$one-fifth;
+$three-tenths      :30%;
+$four-tenths       :$two-fifths;
+$five-tenths       :$one-half;
+$six-tenths        :$three-fifths;
+$seven-tenths      :70%;
+$eight-tenths      :$four-fifths;
+$nine-tenths       :90%;
+
+
+/**
+* Twelfths
+*/
+$one-twelfth       :8.333%;
+$two-twelfths      :$one-sixth;
+$three-twelfths    :$one-quarter;
+$four-twelfths     :$one-third;
+$five-twelfths     :41.666%;
+$six-twelfths      :$one-half;
+$seven-twelfths    :58.333%;
+$eight-twelfths    :$two-thirds;
+$nine-twelfths     :$three-quarters;
+$ten-twelfths      :$five-sixths;
+$eleven-twelfths   :91.666%;
+
+
+/**
+ * If you have set `$responsive` to ‘true’ in `_vars.scss` then you now have
+ * access to these classes. You can define at which breakpoint you’d like an
+ * element to be a certain size, e.g.:
+ *
+ * `<div class="g  one-quarter  lap-one-half  palm-one-whole"> ... </div>`
+ *
+ * This would create a `div` that, at ‘desktop’ sizes, takes up a quarter of the
+ * horizontal space, a half of that space at ‘tablet’ sizes, and goes full width
+ * at ‘mobile’ sizes.
+ *
+ * Demo: jsfiddle.net/inuitcss/WS4Ge
+ *
+ */
+
+@if $responsive == true{
+
+@include media-query(palm){
+    @include grid-setup("palm-");
+}
+
+@include media-query(lap){
+    @include grid-setup("lap-");
+}
+
+@include media-query(lap-and-up){
+    @include grid-setup("lap-and-up-");
+}
+
+@include media-query(portable){
+    @include grid-setup("portable-");
+}
+
+@include media-query(desk){
+    @include grid-setup("desk-");
+}
+
+
+/**
+ * If you have set the additional `$responsive-extra` variable to ‘true’ in
+ * `_vars.scss` then you now have access to the following class available to
+ * accomodate much larger screen resolutions.
+ */
+
+@if $responsive-extra == true{
+
+@include media-query(desk-wide){
+    @include grid-setup("desk-wide-");
+}
+
+}
+
+} /* endif */

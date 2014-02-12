@@ -1,0 +1,58 @@
+@mixin float-row($inner-gutter:0, $outer-gutter:0, $cells-selector: '*') {
+	@extend .cf;
+	padding: $outer-gutter;
+	margin-left:-$inner-gutter;
+	& > #{$cells-selector}{
+		display:block;
+		float:left;
+		padding-left: $inner-gutter;
+	}
+}
+
+@mixin row($inner-gutter:0, $outer-gutter:false, $single:false, $cells-selector: '*') {
+	@extend %gapless;
+	padding: $outer-gutter;	
+	@if ($outer-gutter) {
+		padding: $outer-gutter;
+	}
+	@if ($inner-gutter > 0) {
+		margin-left:-$inner-gutter;
+		& > #{$cells-selector}{
+			padding-left: $inner-gutter;
+		}
+	}
+	@if ($single) {
+		margin-left:0;
+		& > :first-child {
+			padding-left: 0;
+		}
+	}
+}
+
+@mixin table($gutter:0, $cells-selector: '*') {
+	display:table;
+	& > #{$cells-selector}{
+		display:table-cell;
+		border-left:$gutter solid transparent;
+		vertical-align:top;
+	}
+}
+
+@mixin sticky-footer($footer-height, $root-selector: unquote(".page-wrap"),  $footer-selector: unquote(".content-info")) {
+	html, body {
+		height: 100%;
+	}
+	#{$root-selector} {
+		clear: both;
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		margin-bottom: -$footer-height;
+		padding-bottom: $footer-height;
+	}
+
+	#{$footer-selector} {
+		clear: both;
+		height: $footer-height;
+	}
+}

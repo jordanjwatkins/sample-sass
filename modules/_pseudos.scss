@@ -1,0 +1,45 @@
+%whole-height { height: $one-whole; }
+
+%psock{
+	content:"";
+	display:block;
+}
+%psock-h{
+	@extend %psock;
+	@extend %one-whole;
+}
+%psock-v{
+	@extend %psock;
+	@extend %pos-1;
+	@extend %whole-height;
+}
+%psock-stretch{
+	@extend %psock;
+	@extend %one-whole;
+	@extend %whole-height;
+}
+
+@mixin pseudo-h-divider($location:top, $offset:0) {
+	$top:null;
+	$bottom:null;
+	@if ($location == top) {
+		$top: $offset;
+	} @else {
+		$bottom: $offset;
+	}
+	@extend %color_to_trans_edges;	
+	@extend %psock;		
+	@include pos(abs, $top null $bottom 0);	
+	@include opacity(0.2);
+	@extend %one-whole;
+	height:2px;			
+}
+
+// pseudo dividers
+%psider-h-top {
+	@include pseudo-h-divider();			
+}
+
+%psider-h-bottom {
+	@include pseudo-h-divider(bottom);			
+}

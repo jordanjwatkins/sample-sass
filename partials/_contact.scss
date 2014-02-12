@@ -1,0 +1,71 @@
+body.contact {
+	.main-1 {
+		@include row(30px, 25px 30px);
+		h1, h2 { margin-bottom:15px; }
+		.main-1-1 {
+			@extend %one-third;
+			@extend %lap-one-whole;
+		}
+		.main-1-2 {
+			@extend %two-thirds;
+			@extend %lap-one-whole;
+			.map {
+				&:before {
+					@extend %psock-stretch;
+					@extend %pos-1;
+					z-index:2;
+					box-shadow: inset 1px 1px 3px rgba(#000, 0.3);
+				}
+				
+				iframe {
+					@extend %one-whole;
+					height: 300px;
+					display:block;
+				}
+			}
+			a { @extend %default-a; }
+		}
+	}
+	
+	.main-2 {
+		&:before {
+			@extend %psock-h;
+			@extend %pos-1;
+			@include opacity(0.4);
+			top:-2px;
+			height:2px;
+			background: $accent-color-light;		
+		}
+		.grid {
+			@include row(70px, 25px 30px 5px);
+		}		
+		.main-2-1 {
+			@extend %one-third;
+			@extend %lap-one-whole;
+			h2 { margin-bottom:10px; }
+		}
+		.main-2-2 {
+			@extend %two-thirds;
+			@extend %lap-one-whole;
+			&:before {
+				@extend %psock;			
+				@include pos(abs, -25px null null 40px);
+				@extend %color_to_trans;
+				@include opacity(0.4);
+				width:2px;
+				height:100%;
+			}
+			@include media-query(portable) {
+				&:before { display:none; }
+			}
+		}
+	}
+	
+	#contact-form {
+		@extend %zebra-form;
+		@extend %main-form-theme;
+		margin-top:-10px;
+		input[type='submit'] { float:right; }
+	}
+}
+

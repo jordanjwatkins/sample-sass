@@ -1,0 +1,90 @@
+body.single-product {
+	h1 { margin-bottom:0; }
+	.product {
+		@include row(30px);
+		.images { 
+			@extend %five-twelfths;
+			img {
+				width:100%;
+				height:auto;
+			}
+			.thumbnails {
+				@include row(5px);
+				> a {
+					@extend %one-third;
+				}
+			}
+			
+			.learn-more-form { 
+				@extend %zebra-form;
+				@extend %widget-form-theme;
+				background:$main-color-superlight;
+				padding:  10px 17px 4px;
+				margin: 25px 0 0;	
+				&:before { 
+					@extend %psider-h-top;
+					top: -15px;
+				}
+				h3 {
+					@include font-size(16px);
+					font-weight:900;
+					line-height:1.4;
+				}
+				input[type=submit] {
+					@extend %widget-btn--lg;
+				}		
+				.form-row-5 {
+					border-top:1px solid $main-color-lighter;
+					padding-top:7px;
+					label {
+						display:block;
+						margin-left: 5px;
+						font-size: 12px;
+						color: $main-color-light;
+					}
+				}			
+			}
+		}
+		.summary {
+			@extend %seven-twelfths;
+			h2 { @extend %h4; }
+			ul { margin-left: 20px; }
+			.price { font-size:27px; }
+			
+			.variations_form {
+				margin-bottom:24px;
+				padding-bottom:1px;
+				@extend %zebra-form;
+				@extend %main-form-theme;
+				&:before { @extend %psider-h-bottom; }
+			}
+			.variations {			
+				margin-bottom:0;
+				td { 
+					padding:5px;
+					vertical-align:top;
+					label { 
+						font-weight:900; 
+						margin-right:10px;
+						top:2px;
+					}
+				}						
+			}
+			.single_variation_wrap {
+				@extend .islet;
+				margin-top:5px;
+				.stock { 
+					@include font-size(20px);
+					color:$green;					
+					font-weight: 900;
+					display: inline-block;
+				}
+				.price + .stock { margin-left: 30px; }							
+			}
+			.single_add_to_cart_button {
+				float:none !important; 
+				margin-top:5px !important;
+			}			
+		}		
+	}
+}

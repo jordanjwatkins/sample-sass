@@ -1,0 +1,166 @@
+.banner {
+	@extend %site-section;	
+	@include glow(15px);
+	z-index:7;
+	filter:none;
+	.banner-bg{ 
+		width:100%;
+		@extend %main-gradient;
+		@include pos(abs, 0);
+	}
+	.inner { height:125px; }
+	.brand {
+		@include pos(abs, 15px null null 20px);
+		display:inline-block;
+		h1 { margin:0; }
+	}
+	.tagline {
+		@include pos(abs, 30px null null 220px);
+		color:$accent-color;
+		text-shadow:0 0 1px rgba($accent-color,0.4);
+		letter-spacing: 1px;
+		font-weight:300;
+		font-size: 22px;
+		line-height:1.23;
+		font-style:italic;
+	}
+	.phone {
+		@include pos(abs, 56px 10px null null);
+		@include font-size(22px);	
+		font-weight: 700;
+	}
+	@media (max-width: 880px) {
+		.tagline {font-size:16px;}
+		.brand { 
+			@include pos(rel, 15px null null 10px);
+			float:left;
+		}
+		.inner { height:auto; }
+		.banner-social {
+			@include pos(rel, 0 0 null null);
+			margin:10px;
+		}
+		.tagline {
+			@include pos(rel, 0 null null 0);
+			margin:10px;
+			text-align:right;
+			font-size:16px;
+		}
+		.phone { 
+			@include pos(rel, 0 0 null null);
+			margin-right:10px;
+		}
+		.tagline,
+		.phone,
+		.banner-social {
+			float:right;
+			clear:right;			
+		}
+	}
+}
+
+.banner-social {
+	@include row();
+	@include pos(abs, 10px 10px null null);
+	width:114px;
+	height:39px;
+	background: url('../img/social-pill.png') no-repeat 0 0;
+	a {
+		@include opacity(0);
+		@include vendor(transition, .3s opacity ease-out);		
+		width:38px;
+		height:39px;
+		background: url('../img/social-pill-hover.png') no-repeat 0 0;
+		overflow:hidden;
+		&:hover,
+		&:focus {
+			@include opacity(0.95);
+			outline:0;
+		}
+	}
+	.twitter { background-position: -38px 0; }
+	.rss { background-position: -76px 0; }
+	div {
+		@include pos(abs, -2px 100% null null);
+		font-size:12px;
+		font-weight: 300;
+		white-space:nowrap;
+		margin-right:10px;
+		color: $main-color-light;
+		font-style: italic;
+	}	
+}
+
+.nav-main {
+	z-index:auto;
+	@include pos(abs, null 0 0 null);
+	@include color_to_trans($bg-color, left, 0.7, 15%);
+	padding-left: 80px;
+	border-right: 2px solid $accent-color-lighter;
+	.top-border {
+		z-index:100;
+		display:block;
+		height:2px;
+		width:100%;
+		@include pos(abs, 0 -1px null null);
+		@include color_to_trans($accent-color-lighter);
+		@media(max-width:880px) { background:$accent-color-lighter; }
+	}	
+	.nav {
+		@include row();
+		@extend %nav;
+		@extend %two-level-dropdown;
+		@include nav-dividers($accent-color-lighter);
+		margin:0;
+		> li {	
+			&:hover a,
+			&.active a,
+			& a:focus {
+				/*background: rgba($accent-color, 0.06);*/
+				color: $accent-color;
+				border-color: $main-color-dark;
+				outline:0;			
+			}
+			> a {			
+				padding: 5px 15px 3px;
+				border-bottom: 1px solid transparent;
+			}
+			
+			.dropdown-menu {
+				background:#fff;
+				border:1px solid $main-color-light;
+				border-radius: $brand-round;
+				border-top-left-radius:0;
+				 a {
+					color:$main-color-dark;
+					display:block;
+					padding: 5px 20px 8px;
+					&:hover {
+						@include rgba-bg($accent-color, 0.14);
+					}
+				}
+			}
+		}
+		@media(max-width: 880px) {
+			display:inline-block;
+			vertical-align:middle;			
+		}
+	}
+	a {
+		@include vendor(transition, color .3s ease-out, border-color .4s ease-out, opacity .3s ease-out, background-color .2s ease-out);
+		-webkit-transform: translateZ(0);
+		color:$main-color-dark;
+		text-decoration:none;	
+	}
+	@media(max-width: 880px) {
+		@include pos(rel, 0 auto);
+		text-align:center;
+		clear:both;
+		background:#fff;
+		border:0;
+		padding:0;
+	}
+	.cart-empty & .menu-cart {
+		display:none;
+	}
+}

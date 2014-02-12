@@ -1,0 +1,13 @@
+/* Main */
+.main-wrap {
+	z-index:5;
+	@extend %site-section;
+	> div{
+		@include glow(15px);
+		@extend %accent-gradient;
+	}	
+}
+
+.the-content {
+	a { @extend %content-a; }
+}
